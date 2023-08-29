@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% comment %} <script src="{% static 'js/script.js' %}"></script> {% endcomment %}
+</head>
+<body>
+    <main>
+        <section class="movie-section">
+            <div class="grid">
+                {% for movie in movies %}
+                    <a href="{% url "book" movie.slug today_date next_show_time %}" class="a">
+                        <div class="card">
+                            <img src="{{movie.img.url}}" alt="" class="card-img-top  card-img">
+                            <div class="card-body">
+                                <h5 class="card-title">{{movie.name}}</h5>
+                                <div class="card-box">
+                                    <h5 class="card-text">{{movie.certificate}}</h5>
+                                    <span class="card-text mx-2">&#124;</span>
+                                    <h5 class="card-text mx-2">{{movie.aval_lan}}</h5>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="p">Book Ticket</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+        
+</body>
+</html>

@@ -1,0 +1,44 @@
+.card{
+    &-img{
+        display: block;
+        --card-area:40rem;
+        height:var(--card-area);
+        width:100%;
+    }
+    &-title{
+        font-size: 2rem !important;
+    }
+    &-text{
+        font-size:1.7rem;
+    }
+    &-box{
+        display: flex;
+        align-items:baseline;
+    }
+    &-footer{
+        background-color: $bg-primary !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        & .p{
+            font-size:2rem;
+            font-weight: 600;
+            color: whitesmoke;
+            z-index:100;
+        }
+        &::after{
+            content: "";
+            background-color:tomato;
+            height:100%;
+            width:0%;
+            position: absolute;
+            transition:all 0.70s ease-in-out;
+            opacity:0;
+        }
+        &:hover::after{
+            opacity:1;
+            width:100%;
+        }
+    }
+}

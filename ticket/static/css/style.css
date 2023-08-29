@@ -1,0 +1,144 @@
+*,
+*::before,
+*::after {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: sans-serif !important;
+  font-weight: 400;
+  line-height: 1.6; }
+
+.wrap {
+  height: 70vh;
+  overflow: scroll;
+  padding: 5rem;
+  scroll-snap-type: mandatory;
+  background-color: whitesmoke; }
+
+#screen {
+  transform: rotate(180deg); }
+
+.screen {
+  height: 30vh;
+  background-color: grey;
+  border-radius: 1rem;
+  perspective: 2rem;
+  perspective-origin: 10rem; }
+
+.info {
+  height: 2rem;
+  width: 2rem; }
+  .info-1 {
+    background-color: whitesmoke;
+    border: 2px solid #00b8f5; }
+  .info-2 {
+    background-color: #00b8f5; }
+  .info-3 {
+    background-color: #dfdfdf; }
+
+.indicator {
+  font-size: 3rem;
+  color: whitesmoke; }
+
+.movie-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0rem;
+  padding: 1rem; }
+
+.seat_select {
+  height: 3rem;
+  width: 3rem;
+  border: 2px solid #00b8f5;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: 600; }
+  .seat_select:nth-last-child(15) {
+    margin-right: 5rem; }
+
+.seat_selected {
+  background-color: aqua;
+  color: black; }
+
+.curse-not {
+  cursor: not-allowed; }
+
+/* seat coverting  to booked */
+.seats-booked {
+  background-color: #dfdfdf;
+  border: none;
+  cursor: not-allowed; }
+
+.conform {
+  display: none;
+  position: absolute;
+  top: 30%;
+  bottom: 0%;
+  right: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh; }
+
+.conform-show {
+  display: block; }
+
+.card-img {
+  display: block;
+  --card-area:40rem;
+  height: var(--card-area);
+  width: 100%; }
+
+.card-title {
+  font-size: 2rem !important; }
+
+.card-text {
+  font-size: 1.7rem; }
+
+.card-box {
+  display: flex;
+  align-items: baseline; }
+
+.card-footer {
+  background-color: #0D1282 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .card-footer .p {
+    font-size: 2rem;
+    font-weight: 600;
+    color: whitesmoke;
+    z-index: 100; }
+  .card-footer::after {
+    content: "";
+    background-color: tomato;
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    transition: all 0.70s ease-in-out;
+    opacity: 0; }
+  .card-footer:hover::after {
+    opacity: 1;
+    width: 100%; }
+
+.movie-section {
+  background: #020024;
+  background: linear-gradient(90deg, #020024 0%, #090979 0%, #00d4ff 100%);
+  height: 100vh; }
+  .movie-section .grid {
+    margin: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem; }
+    .movie-section .grid .a {
+      text-decoration: none; }

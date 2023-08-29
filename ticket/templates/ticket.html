@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <main>
+        {% if fake %}
+        {% comment %} <h1>hi</h1> {% endcomment %}
+        <div id="facebooking" data-list={{fake}} ></div>
+        {% endif %}
+        <div id="movie-data" data-list={{index}} ></div>
+        <div id="time-data" data-time={{time}} ></div>
+        <div id="csrf-token" data-token="{{ csrf_token }}"></div>
+        {% csrf_token %}
+        <section>
+            <div class="container">
+                <div class="row my-5">
+                    
+                    <div class="col-12 d-flex justify-content-center">
+                        {% for date in dates %}
+                            {% if date == today_date %}
+                                <a href="{% url 'book' movie date next_show_time  %}" class="btn p-3 mx-3 {% if path_date == date.date%} btn-primary {% else %} btn-link {% endif %}"><span class="h2">{{date}}</span></a>
+                                {% else %}
+                                <a href="{% url 'book' movie date time %}" class="btn p-3 mx-3 {% if path_date == date.date%} btn-primary {% else %} btn-link {% endif %} ">
+                                    <span class="h2">{{ date }}</span>
+                                </a>
+                            {% endif %} 
+                            
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row my-3">
+                    <div class="col-12 d-flex justify-content-center">
+                        {% for time in times %}
+                            <a href="{% url 'book' movie date time.time %}" class="btn btn-link mx-3 "><span class="h1">{{time}}</span></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- screen start -->
+        <section>
+            <div class="container my-3">
+                <div class="text-center">
+                    <svg version="1.1" width="300" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    viewBox="0 0 32 32" xml:space="preserve">
+               <style type="text/css">
+                   .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+               </style>
+               <path class="st0" d="M31,26L31,26c-9.8-2.6-20.2-2.6-30,0l0,0V6l0,0c9.8,2.6,20.2,2.6,30,0l0,0V26z"/>
+               <path class="st0" d="M13,13V19c0,0.7,0.9,1.2,1.5,0.8l5-3c0.6-0.4,0.6-1.2,0-1.6l-5-3C13.9,11.7,13,12.2,13,13z"/>
+               </svg>
+                </div>
+            </div>
+        </section>
+        <!-- screen end -->
+        <!-- seats seaction -->
+        <section>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center">
+                        <div class="info info-1"></div>
+                        <p class="h2 me-5">unbooked</p>
+                        <div class="info info-2"></div>
+                        <p class="h2 me-5">select</p>
+                        <div class="info info-3"></div>
+                        <p class="h2 me-5">booked</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="wrap">
+                    {% with ''|center:26 as range %}
+                        {% for row in range %}
+                            <div class="movie-row">
+                                <span class="h2">{{forloop.counter}}</span>
+                                {% with  ''|center:30 as col  %}
+                                    {% for _ in col %}
+                                    <a href="" class="seat_select"></a>
+                                    {% endfor %}
+                                {% endwith %}
+                            </div>
+                        {% endfor %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-primary w-25 p-3 " id="book-btn"><span class="h1">Book</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="conform">
+            <div class="conform__box">
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>
